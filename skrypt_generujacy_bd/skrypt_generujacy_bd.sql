@@ -71,10 +71,9 @@ CREATE TABLE ArtistBand (
 GO
 	
 CREATE TABLE Client (
-	clientId int IDENTITY NOT NULL, 
+	clientId int NOT NULL PRIMARY KEY CLUSTERED, 
 	name varchar(40) NOT NULL, 
-	surname varchar(40) NOT NULL, 
-	PRIMARY KEY (clientId)
+	surname varchar(40) NOT NULL
 	);
 	
 	
@@ -93,24 +92,22 @@ GO
 
 
 CREATE TABLE Band (
-	bandId int IDENTITY NOT NULL, 
-	name varchar(40) NOT NULL, 
-	PRIMARY KEY (bandId)
+	bandId int NOT NULL PRIMARY KEY CLUSTERED, 
+	name varchar(40) NOT NULL
 );
 
 CREATE TABLE Album (
-	albumId int IDENTITY NOT NULL, 
+	albumId int NOT NULL PRIMARY KEY CLUSTERED,
 	bandId int NOT NULL, 
 	name varchar(40) NOT NULL, 
-	releasedDate date NOT NULL, 
-	PRIMARY KEY (albumId)
+	releasedDate date NOT NULL
 );
 	
 CREATE TABLE Artist (
-	artistId int IDENTITY NOT NULL, 
+	artistId int NOT NULL PRIMARY KEY CLUSTERED,
 	name varchar(40) NOT NULL, 
 	surname varchar(40) NOT NULL, 
-	isVocalist bit NOT NULL, PRIMARY KEY (artistId)
+	isVocalist bit NOT NULL
 );
 
 
