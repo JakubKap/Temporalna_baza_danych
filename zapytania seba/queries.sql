@@ -18,3 +18,10 @@ FROM Band
      ArtistInstrument FOR SYSTEM_TIME BETWEEN '1980-01-01' AND '2010-12-31' on ArtistInstrument.artistId = Artist.artistId
 WHERE Band.name = 'Metallica' and Artist.name = 'Lefty' and Artist.surname = 'Hadwen'
 GROUP BY Band.name, Artist.name, Artist.surname
+
+
+-- zamowienia ktorych stan zostal zmeniony jeszcze w czerwcu 2019
+select Album.name, [Order].sysStartTime, [Order].sysEndTime
+FROM Album
+    INNER JOIN [Order] FOR SYSTEM_TIME CONTAINED IN ('2019-06-01', '2019-06-30') on [Order].[albumId] = Album.albumId
+Order BY [Order].[sysStartTime]
