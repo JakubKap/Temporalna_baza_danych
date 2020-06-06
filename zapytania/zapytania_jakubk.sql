@@ -12,3 +12,13 @@ INNER JOIN (
 WHERE a.isVocalist = 1
 GROUP BY a.artistId, a.name, a.surname
 ORDER BY artistId;
+
+-- Zapytanie 2 - Wyświetlenie nazwy zespołu do którego należała największa liczba członków przez cały okres istnienia zespołu w bazie danych.
+
+SELECT TOP 1 b.name, COUNT(*) as countOfMembers
+FROM Band b
+INNER JOIN (
+			SELECT * FROM ArtistBand 
+			FOR SYSTEM_TIME ALL
+			) AS ab ON b.bandId = ab.bandId
+GROUP BY b.bandId, b.name
