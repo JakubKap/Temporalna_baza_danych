@@ -1,4 +1,4 @@
-# turn off system versioning
+-- turn off system versioning
 ALTER TABLE ArtistBand SET (SYSTEM_VERSIONING = OFF);
 ALTER TABLE ArtistBand DROP PERIOD FOR SYSTEM_TIME;
 GO
@@ -11,7 +11,7 @@ ALTER TABLE [Order] SET (SYSTEM_VERSIONING = OFF);
 ALTER TABLE [Order] DROP PERIOD FOR SYSTEM_TIME;
 GO
 
-# inserts
+-- inserts
 insert into Client (clientId, name, surname) values (1, 'Morissa', 'Barnby');
 insert into Client (clientId, name, surname) values (2, 'Mario', 'Labet');
 insert into Client (clientId, name, surname) values (3, 'Delmor', 'Tilbey');
@@ -235,7 +235,7 @@ insert into [OrderHistory] (albumId, clientId, orderDate, sysStartTime, sysEndTi
 insert into [OrderHistory] (albumId, clientId, orderDate, sysStartTime, sysEndTime) values (20, 24, '2018-01-15 23:58:59', '2018-01-15 23:58:59', '2019-06-15 19:58:07');
 GO
 
-# turn on system versioning
+-- turn on system versioning
 ALTER TABLE ArtistBand ADD PERIOD FOR SYSTEM_TIME(SysStartTime, SysEndTime);
 ALTER TABLE ArtistBand SET (SYSTEM_VERSIONING = ON (HISTORY_TABLE = dbo.ArtistBandHistory));
 GO
