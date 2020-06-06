@@ -1,3 +1,6 @@
+USE MusicAlbumsMarket;
+GO
+
 -- turn off system versioning
 ALTER TABLE ArtistBand SET (SYSTEM_VERSIONING = OFF);
 ALTER TABLE ArtistBand DROP PERIOD FOR SYSTEM_TIME;
