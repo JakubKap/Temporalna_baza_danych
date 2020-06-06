@@ -1,3 +1,4 @@
+-- wyświetlenie calej historii zamowien
 select Client.name, Client.surname, Album.name AS album, [Order].[orderDate], [Order].sysStartTime, [Order].sysEndTime
 from Client
     INNER JOIN
