@@ -21,4 +21,15 @@ INNER JOIN (
 			SELECT * FROM ArtistBand 
 			FOR SYSTEM_TIME ALL
 			) AS ab ON b.bandId = ab.bandId
-GROUP BY b.bandId, b.name
+GROUP BY b.bandId, b.name;
+
+-- Zapytanie 3 - Wyświetlenie id, imienia oraz nazwoska artysty (który nie jest wokalistą), który nie grał na żadnym instrumencie w dniu 1990-01-01. Wynik został posortowany po id artysty.
+
+SELECT a.artistId, a.name, a.surname
+FROM Artist a
+LEFT JOIN (
+			SELECT * FROM ArtistInstrument
+			FOR SYSTEM_TIME AS OF '1990-01-01'
+			) AS ab ON a.artistId = ab.artistId
+WHERE a.isVocalist = 0 AND ab.artistId IS NULL
+ORDER BY a.artistId;
